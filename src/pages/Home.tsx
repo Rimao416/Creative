@@ -2,7 +2,6 @@ import Logo from "../../src/assets/logo.png";
 import Main_Image from "../../src/assets/main_header.png";
 import Dashboard_image from "../../src/assets/dashboard.jpg";
 import Engagement from "../../src/assets/engagement_2.jpg";
-import Blob from "../../src/assets/blob.png";
 // import Krisp from "../../src/assets/krisp.png";
 // import Loom from "../../src/assets/Loom.png";
 // import Uber from "../../src/assets/uber.png";
