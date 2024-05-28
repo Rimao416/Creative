@@ -1,21 +1,31 @@
 import Logo from "../../src/assets/logo.png";
 import Main_Image from "../../src/assets/main_header.png";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
 import Dashboard_image from "../../src/assets/dashboard.jpg";
 import Engagement from "../../src/assets/engagement_2.jpg";
+import Know from "../../src/assets/know.png";
 // import Krisp from "../../src/assets/krisp.png";
 // import Loom from "../../src/assets/Loom.png";
 // import Uber from "../../src/assets/uber.png";
 // import Zapier from "../../src/assets/zapier.png";
 // import Bubble from "../../src/assets/Bubble.png";
+import { Swiper, SwiperSlide } from "swiper/react";
 
+import "swiper/css";
+import "swiper/css/pagination";
+
+import SwiperCore from "swiper";
 import Button from "../components/Button";
 import Dashboard from "../components/Dashboard";
 import { DashboardData } from "../constant/DashboardData";
 import Features from "../components/Features";
+import { TestimonialsData } from "../constant/TestimonialsData";
+import Testimonials from "../components/Testimonials";
+import { useRef } from "react";
 // import React from 'react'
 
 function Home() {
-
+  const swiperRef = useRef<SwiperCore | null>(null);
   return (
     <div className="app">
       <section className="top">
@@ -92,14 +102,121 @@ function Home() {
       </section>
       <section className="engagement">
         <div className="engagement__wrapper">
-          <h1 className="engagement__wrapper--title">Prêt à améliorer l'engagement et la rétention ?</h1>
+          <h1 className="engagement__wrapper--title">
+            Prêt à améliorer l'engagement et la rétention ?
+          </h1>
         </div>
         <div className="engagement__wrapper">
           {/* <img src={Blob} alt="" className="engagement__wrapper--blob" /> */}
           <img src={Engagement} alt="" />
         </div>
       </section>
+      <section className="testimonials">
+        <div className="testimonials__wrapper">
+          <h1 className="testimonials__title">Ce qu'ils pensent de nous</h1>
+          <p className="testimonials__description">
+            Découvrez en détail les témoignages et expériences de nos
+            utilisateurs passionnés, et voyez comment notre matière a non
+            seulement stimulé leur créativité, mais a également transformé leur
+            vie professionnelle et personnelle
+          </p>
+          <span className="testimonials__arrow">
+            <span
+              className="testimonials__arrow--left"
+              onClick={() => {
+                if (swiperRef.current) swiperRef.current.slidePrev();
+              }}
+            >
+              <RiArrowLeftSLine />
+            </span>
+            <span
+              className="testimonials__arrow--right"
+              onClick={() => {
+                if (swiperRef.current) swiperRef.current.slideNext();
+              }}
+            >
+             
+              <RiArrowRightSLine />
+            </span>
+          </span>
+        </div>
+        <div className="testimonials__wrapper">
+          <Swiper
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            slidesPerView={3}
+            spaceBetween={50}
+            loop={true}
+            onSlideChange={() => console.log("slide change")}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+              },
+              480: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 1,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+          >
+            {TestimonialsData.map((testimonials, index) => (
+              <SwiperSlide>
+                <Testimonials key={index} {...testimonials} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
+      <section className="meaningful">
+        <img src={Know} alt="" className="meaningful__image" />
+        <h1 className="meaningful__title">Commencez à donner du sens à <span> la reconnaissance </span>  et <span> aux récompenses </span>  qui comptent</h1>
+        <p className="meaningful__description">Découvrez comment des gestes de reconnaissance sincères et des récompenses bien pensées peuvent transformer votre équipe et votre organisation. </p>
+        <div className="meaningful__wrapper">
+          <Button type="inline" title="Voir plus" />
+          <Button type="outline" title="Soutenez nous" />
+        </div>
+      </section>
+      <section className="footer">
+        <div className="footer__content">
+          <img src={Logo} alt="" />
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+          <div className="footer__icons">
+            <a href="#"></a>
+          </div>
+        </div>
+        <div className="footer__content">
+          <h4 className="footer__title">Projets</h4>
+          <ul className="footer__item">
 
+          <li className="footer__list"><a href="#">House</a></li>
+          <li className="footer__list"><a href="#">House</a></li>
+          <li className="footer__list"><a href="#">House</a></li>
+          <li className="footer__list"><a href="#">House</a></li>
+          </ul>
+
+        </div>
+        <div className="footer__content">
+          <h4 className="footer__title">Projets</h4>
+          <ul className="footer__item">
+
+          <li className="footer__list"><a href="#">House</a></li>
+          <li className="footer__list"><a href="#">House</a></li>
+          <li className="footer__list"><a href="#">House</a></li>
+          <li className="footer__list"><a href="#">House</a></li>
+          </ul>
+
+        </div>
+        <div className="footer__content">
+          <h4 className="footer__title">Projets</h4>
+         <p>Lorem ipsum dolor sit amet consectetur</p>
+         <Button type="inline" title="Soutenez nous" />
+        </div>
+      </section>
     </div>
   );
 }
