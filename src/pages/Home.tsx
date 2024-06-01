@@ -192,10 +192,7 @@ function Home() {
           <motion.p variants={description} className="top__header--text">
             "Créer une culture que les gens ne quittent pas" est une application
             innovante conçue pour aider les entreprises à bâtir et maintenir une
-            culture d'entreprise attrayante et durable. Cette application offre
-            des outils et des ressources pour analyser, améliorer et gérer la
-            culture organisationnelle, en mettant l'accent sur la rétention des
-            talents et le bien-être des employés.
+            culture d'entreprise attrayante et durable.
           </motion.p>
           <motion.img src={Main_Image} alt="" className="top__header--image" />
         </motion.div>
