@@ -4,7 +4,8 @@
   overflow: hidden;
   height: 90vh;
   @include respond(phone) {
-    height: 60vh;
+    height: 70vh;
+    clip-path: circle(120vh at 50% -70vh);
   }
   padding: 2rem 6rem 0 6rem;
   font-weight: $main-font-weight;
@@ -80,6 +81,9 @@
     }
     &--title {
       font-size: 35px;
+      @include respond(tab-port) {
+        font-size: 30px;
+      }
       // font-weight: 800;
       font-weight: $main-font-weight;
       span {
@@ -98,6 +102,10 @@
       margin-top: -15rem;
       z-index: -1;
       overflow: hidden;
+      @include respond(tab-port) {
+        margin-top: 0;
+        
+      }
     }
   }
 }
