@@ -1,8 +1,8 @@
-*.top {
+.top {
   background-color: #d7e4ff7c;
   font-size: 14px;
   overflow: hidden;
-  height: 90vh;
+  height: 100vh;
   padding: 2rem 6rem 0 6rem;
   font-weight: $main-font-weight;
   clip-path: circle(180vh at 50% -90vh);
@@ -13,12 +13,28 @@
     align-items: center;
 
     &--logo {
-      width: 10rem;
+      width: 100px;
       display: inline-block;
     }
     &--list {
       display: inline-block;
       list-style: none;
+      @include respond(phone) {
+        display: none;
+      }
+    }
+    &--toggle {
+      font-size: 20px;
+
+      display: none;
+      @include respond(phone) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+      }
+
+      // display: none;
     }
     &--item {
       display: inline-block;
@@ -31,11 +47,20 @@
       }
     }
     &--wrapper {
-      &:nth-child(1) {
+      &:nth-child(2) {
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        margin-left: 12px;
         gap: 6rem;
+
       }
+      &:nth-child(3) {
+        @include respond(phone) {
+          display: none;
+        }
+      }
+
     }
   }
   &__header {
@@ -170,6 +195,11 @@
       font-weight: 600;
       line-height: 1;
     }
+    &--text {
+      font-size: 14px;
+      margin-top: 1rem;
+      // color: #7c7c7c;
+    }
     &--description {
       font-size: 14px;
       margin-top: 1rem;
@@ -243,6 +273,7 @@
   align-items: center;
   text-align: center;
   position: relative;
+  // height: 80vh;
   &__image {
     position: absolute;
     left: -6rem;
@@ -291,11 +322,11 @@
   &__title {
     font-size: 16px;
   }
-  &__list{
+  &__list {
     list-style: none;
     padding: 0;
     margin: 0;
-    a{
+    a {
       text-decoration: none;
       color: #7c7c7c;
       // font-size: 12px;
